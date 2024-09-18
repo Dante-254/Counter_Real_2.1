@@ -1,0 +1,7 @@
+form {
+    display: block; /* Ensure the form is visible */
+}
+
+select, input {
+    display: inline-block; /* Ensure form elements are visible */
+}

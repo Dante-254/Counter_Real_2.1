@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aboutus.css' %}">
+    <title>Dive Deep</title>
+
+</head>
+<body>
+    <div class="navbar">
+        <div class="logoleft">
+          <div class="logodiv">
+              <a href="/"><img class="logo" src="{% static 'img/logo/logo.jpg' %}" alt=""></a>
+          </div>
+        </div>
+        <div>
+           <h1 class="index_heading">COUNTER REAL ESTATE</h1>
+        </div>
+        <div class="linkRight">
+          <div class="">
+             <a href="/"><button class="homebtn" >Home</button></a>
+          </div>
+          <div class="">
+             <button class=""></button>
+           </div>
+        </div>
+      </div>
+
+      <div class="search_heading">
+        Search All Over Kenya
+      </div>
+    
+    <form method="get" action="{% url 'search' %}">
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+    
+
+    
+    <!--
+    <form method="get" action="">
+        <label for="bedrooms">Bedrooms:</label>
+        <select name="bedrooms" id="bedrooms">
+            <option value="">Any</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+
+            
+        </select>
+        
+        <label for="bathrooms">Bathrooms:</label>
+        <select name="bathrooms" id="bathrooms">
+            <option value="">Any</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <Add more options as needed>
+        </select>
+    
+        <label for="price_min">Price Min:</label>
+        <input type="number" name="price_min" id="price_min">
+    
+        <label for="price_max">Price Max:</label>
+        <input type="number" name="price_max" id="price_max">
+    
+        <label for="listing_type">Listing Type:</label>
+        <select name="listing_type" id="listing_type">
+            <option value="">Any</option>
+            <option value="buy">Buy</option>
+            <option value="rent">Rent</option>
+        </select>
+    
+        <button type="submit">Search</button>
+    </form>
+      -->
+
+        <!-- <ul>
+        {% for listing in listings %}
+            <li>{{ listing.bedrooms }} bed, {{ listing.bathrooms }} bath - ${{ listing.price }} ({{ listing.get_listing_type_display }})</li>
+        {% empty %}
+            <li>No results found</li>
+        {% endfor %}
+        </ul>
+     -->
+
+       
+
+     {% if listings %}
+     <ul>
+         {% for listing in listings %}
+             <li>{{ listing.title }} &rarr;	 ${{ listing.price }} <br> {{ listing.bedrooms }} bedrooms, {{ listing.bathrooms }} baths<br> ({{ listing.get_listing_type_display }})</li>
+             <br>
+             
+         {% endfor %}
+     </ul>
+ {% else %}
+     <p>No results found.</p>
+ {% endif %}
+
+</body>
+</html>
+

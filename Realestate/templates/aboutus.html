@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>about us</title>
+		<link rel="stylesheet" href="{% static 'css/aboutus.css' %}">
+
+</head>
+<body>
+  <div class="navbar">
+      <div class="logoleft">
+      	<div class="logodiv">
+      	    <a href="/"><img class="logo" src="{% static 'img/logo/logo.jpg' %}" alt=""></a>
+      	</div>
+     </div>
+		 <div class="linkRight">
+       <div class="homebtn_div">
+				<a href="/"><button class="homebtn">Home</button></a>
+           
+       </div>
+       <div class="contactusbtn_div">
+		<a href="search"><button class="contactusbtn">Dig Deep</button></a>
+       </div>
+		</div>
+  </div>
+	<div class="body-container">
+		<div class="map-div">
+			<h2 class="heading">Direction</h2>
+			<div id="map" style="width:100%; height:400px">
+		  </div>
+		</div>
+
+		<div class="newprojects-div">
+			<h2 class="heading">New Projects</h2>
+			<div class="projects">
+				<div class="proj1">
+					<img src="{% static 'img/aboutus/r.jpg' %}" alt="image not found">
+					<h3>Urefu Heights</h3>
+					<p>Urefu Heights is a comprehensive and luxurious mixed-use development located in Ngong. Urefu Heights provides an opportunity to buy into a unique development in a serene environment. These 18 luxury homes, with each villa sitting on ½ acre, provide spacious living areas surrounded by expansive luscious compounds.</p>
+				</div>
+				<div class="proj2">
+					<img src="{% static 'img/aboutus/realestate.jpg' %}" alt="image not found">
+					<h3>Smart Building</h3>
+					<p>Smart Building  is a comprehensive residential development with modern rooms and impeccable finishing.The project is strategically positioned in Westland neighborhood. The adjacent suburbs Kabete,and Kikuyu also make the location quite secure and attractive for investors.</p>
+				</div>
+				<div class="proj3">
+
+					<img src="{% static 'img/aboutus/images.jpg' %}" alt="image not found">
+					<h3>Saita Village</h3>
+					<p>Nestled in the scenic ravine of Kajiado, Saita Village derives its name from a masaai word meaning together. It is an exclusive, world-class gated community offering a live, work and play environment and a great investment.</p>
+				</div>
+			</div>
+		</div>
+	</div>
