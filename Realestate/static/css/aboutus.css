@@ -1,49 +1,3 @@
-*{
-  margin: 0;
-  padding: 0;
-}
-a{text-decoration: none;
-}
-.logo{
-  height: 60px;
-}
-.navbar{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  background-color: #ffffff;
-}
-.linkRight{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  
-}
-.contactusbtn,.homebtn{
-  margin: 7px;
-  border: 2px solid #d70011;
-  padding: 7px;
-  border-radius: 35px;
-  color: #d70011;
-  font-weight: bold;
-  font-family: Georgia;
-  transition: 0.2s;
-  opacity: 90%;
-}
-.contactusbtn:hover,.homebtn:hover{
-  background-color: #d70011;
-  color: #ffffff;
-  transform: translate(1.5px, -1.5px);
-  transition: 0.2s;
-
-}
-.contactusbtn:active,.homebtn:active{
-  transform: translate(-0.7px, 0.7px);
-  opacity: 60%;
-  transition: 0.2s;
-}
 .heading{
   font-family: calibri;
   font-weight: bolder;
@@ -58,21 +12,19 @@ a{text-decoration: none;
   unicode-bidi: isolate;
 }
 .projects{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 .proj1,.proj2,.proj3{
   margin: 5px;
   padding: 0px;
   border: #d70011 solid 0px;
   border-radius: 30px;
-  width: 435px;
   transition: 0.5s;
+  z-index: 0;
 }
 .proj1 img,.proj2 img,.proj3 img{
-  width: 435px;
+  width: 100%;
   height: 280px;
   border-radius: 30px;
   
@@ -89,4 +41,5 @@ a{text-decoration: none;
 }
 .proj1:hover,.proj2:hover,.proj3:hover{
   transform: translate(2px, -2px);
+  z-index: 0;
 }

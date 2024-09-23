@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'css/aboutus.css' %}">
     <title>Dive Deep</title>
 
 </head>
@@ -25,23 +25,42 @@
              <a href="/"><button class="homebtn" >Home</button></a>
           </div>
           <div class="">
-             <button class=""></button>
+            <a href=""></a>
            </div>
         </div>
-      </div>
+    </div>
 
-      <div class="search_heading">
+    <div class="search_heading">
         Search All Over Kenya
-      </div>
-    
-    <form method="get" action="{% url 'search' %}">
-        {{ form.as_p }}
-        <button type="submit">Search</button>
-    </form>
-    
+    </div>
+    <div class="search_form_container">
+        <form method="get" action="{% url 'search' %}" class="form">
+            {{ form.as_p }}
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="list_container">
+        <!-- {% if listings %} -->
+        
+            {% for listing in listings %}
+            <div class="list_item">
+                <img src="{% static 'img/aboutus/download(1).jpg' %}" alt="">
+                <h6>{{ listing.title }}</h6>
+                <h3>${{ listing.price }}</h3>
+                <p> {{ listing.bedrooms }} bedrooms,</p>
+                <p>{{ listing.bathrooms }} bathrooms</p>
+                <h4>({{ listing.get_listing_type_display }})</h4>
+            </div>
+            {% endfor %}
+        
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
 
-    
-    <!--
+ <!--
     <form method="get" action="">
         <label for="bedrooms">Bedrooms:</label>
         <select name="bedrooms" id="bedrooms">
@@ -87,21 +106,3 @@
         {% endfor %}
         </ul>
      -->
-
-       
-
-     {% if listings %}
-     <ul>
-         {% for listing in listings %}
-             <li>{{ listing.title }} &rarr;	 ${{ listing.price }} <br> {{ listing.bedrooms }} bedrooms, {{ listing.bathrooms }} baths<br> ({{ listing.get_listing_type_display }})</li>
-             <br>
-             
-         {% endfor %}
-     </ul>
- {% else %}
-     <p>No results found.</p>
- {% endif %}
-
-</body>
-</html>
-

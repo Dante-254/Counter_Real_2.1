@@ -4,11 +4,11 @@ from .models import Listing
 from .forms import ListingSearchForm
 
 class SearchForm(forms.Form):
-    bedrooms = forms.ChoiceField(choices=[('', 'Any'), (1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
-    bathrooms = forms.ChoiceField(choices=[('', 'Any'), (1, '1'), (2, '2'), (3, '3')])
+    bedrooms = forms.ChoiceField(choices=[('', 'Any'), (1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')], required=False)
+    bathrooms = forms.ChoiceField(choices=[('', 'Any'), (1, '1'), (2, '2'), (3, '3')], required=False)
     price_min = forms.IntegerField(required=False)
     price_max = forms.IntegerField(required=False)
-    listing_type = forms.ChoiceField(choices=[('', 'Any'), ('buy', 'Buy'), ('rent', 'Rent')])
+    listing_type = forms.ChoiceField(choices=[('', 'Any'), ('buy', 'Buy'), ('rent', 'Rent')], required=False)
 
 def search(request):
     form = SearchForm(request.GET)
@@ -38,9 +38,9 @@ def search(request):
             listings = listings.filter(price__lte=price_max)
             print(f'Filtered by price_max: {listings.query}')  # Debug
 
-        if listing_type:
-            listings = listings.filter(listing_type=listing_type)
-            print(f'Filtered by listing_type: {listings.query}')  # Debug
+        # if listing_type:
+        #     listings = listings.filter(listing_type=listing_type)
+        #     print(f'Filtered by listing_type: {listings.query}')  # Debug
 
     context = {
         'form': form,
@@ -59,5 +59,6 @@ def index(request):
 def aboutus(request):
     return render(request, 'aboutus.html')
 
-
+# def as_view(request):
+#     return render(request, 'index.html')
 

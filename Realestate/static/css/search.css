@@ -1,7 +1,77 @@
-form {
-    display: block; /* Ensure the form is visible */
+
+.list_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 15px;
+    row-gap: 30px;
+    margin-left: 170px;
+    
+
 }
 
-select, input {
-    display: inline-block; /* Ensure form elements are visible */
+.list_item img{
+    width: 100%;
 }
+
+label{
+}
+.search_form_container{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 60px;
+    width: 150px;
+    background-color: rgb(255, 255, 255);
+    
+
+}
+.form{
+}
+select,input,button{
+    width: 100%;
+
+}
+/* .form p:nth-child(1),.form p:nth-child(3),.form p:nth-child(5)
+.form p:nth-child(0){
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 100px;
+    height: 25px;
+
+}
+.form p:nth-child(2){
+    position: absolute;
+    top: 10px;
+    left: 250px;
+    right: 100px;
+    height: 25px;
+}
+.form p:nth-child(3){
+    position: absolute;
+    top: 45px;
+    left: 10px;
+    right: 100px;
+    height: 25px;
+}
+.form p:nth-child(4){
+    position: absolute;
+    top: 45px;
+    left: 300px;
+    right: 100px;
+    height: 25px;
+}
+.form p:nth-child(5){
+    position: absolute;
+    top: 80px;
+    left: 10px;
+    right: 100px;
+    height: 25px;
+}
+.form p:nth-child(6){
+    position: absolute;
+    top: 80px;
+    left: 300px;
+    right: 100px;
+    height: 25px;
+} */

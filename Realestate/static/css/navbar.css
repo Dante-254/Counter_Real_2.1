@@ -1,0 +1,44 @@
+.logo{
+    height: 60px;
+  }
+  .navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #ffffff;
+    z-index: 100;
+  }
+  .linkRight{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+  }
+  .contactusbtn,.homebtn{
+    margin: 7px;
+    border: 2px solid #d70011;
+    padding: 7px;
+    border-radius: 35px;
+    color: #d70011;
+    font-weight: bold;
+    font-family: Georgia;
+    transition: 0.2s;
+    opacity: 90%;
+  }
+  .contactusbtn:hover,.homebtn:hover{
+    background-color: #d70011;
+    color: #ffffff;
+    transform: translate(1.5px, -1.5px);
+    transition: 0.2s;
+  
+  }
+  .contactusbtn:active,.homebtn:active{
+    transform: translate(-0.7px, 0.7px);
+    opacity: 60%;
+    transition: 0.2s;
+  }  
