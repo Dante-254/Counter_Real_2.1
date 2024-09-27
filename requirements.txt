@@ -92,11 +92,11 @@ distro==1.9.0
 Django==4.2.15
 dnslib==0.9.25
 dnspython==2.6.1
-dnsrecon==1.2.0
+
 docker==7.1.0
 docopt==0.6.2
 docutils==0.21.2
-donut-shellcode==0.9.3
+
 dploot==3.0.0
 dropbox==12.0.2
 dsinternals==1.2.4

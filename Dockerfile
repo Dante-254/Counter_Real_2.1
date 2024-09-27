@@ -1,26 +1,22 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9-slim
+FROM python:3.10-slim
 
 # Set the working directory in the container
 WORKDIR /app
 
-# Install dbus development libraries
-RUN apt-get update && apt-get install -y \
-    libdbus-1-dev \
-    pkg-config \
-    meson
-
-# Copy the current directory contents into the container
-COPY . .
-
-# Install any needed packages specified in requirements.txt
+# Install dependencies
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 8000 available to the world outside this container
-EXPOSE 8000
+# Copy the current directory contents into the container at /app
+COPY . /app/
 
-# Define environment variable
-ENV NAME World
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-# Run app.py when the container launches
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Expose the port on which Django runs
+EXPOSE 8055
+
+# Run the Django development server
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8055"]

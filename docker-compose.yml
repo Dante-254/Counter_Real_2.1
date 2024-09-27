@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: counter_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 10241024
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8055
+    volumes:
+      - .:/app
+    ports:
+      - "8055:8055"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
+
