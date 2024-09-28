@@ -9,7 +9,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('search', views.search, name='search'),
-    path('aboutus', views.aboutus, name='aboutus'),
+    path('search/', views.search, name='search'),
+    path('aboutus/', views.aboutus, name='aboutus'),
     # path('', views.as_view, name='home'),
 ]# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
