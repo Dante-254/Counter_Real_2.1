@@ -85,7 +85,7 @@ DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
        'NAME': 'counterdb',
-       'USER': 'postgres',
+       'USER': 'manoti',
        'PASSWORD': '10241024',
        'HOST': 'localhost',
        'PORT': '5432',       
