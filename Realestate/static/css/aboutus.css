@@ -1,3 +1,16 @@
+body{
+  margin: 0;
+  height: 101%;
+}
+.body-container{
+  margin-top: 70px;
+}
+.map{
+  width: 100%;
+}
+iframe{
+  width: 100%;
+}
 .heading{
   font-family: calibri;
   font-weight: bolder;
@@ -5,15 +18,11 @@
   color: #d70011;
   text-align: center;
   display: block;
-  margin-block-start: 0.83em;
-  margin-block-end: 0.83em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  unicode-bidi: isolate;
 }
 .projects{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px 100px;
 }
 .proj1,.proj2,.proj3{
   margin: 5px;
@@ -42,4 +51,5 @@
 .proj1:hover,.proj2:hover,.proj3:hover{
   transform: translate(2px, -2px);
   z-index: 0;
+  transition: 1s;
 }

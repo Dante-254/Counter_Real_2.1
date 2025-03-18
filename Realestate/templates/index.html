@@ -7,6 +7,8 @@
     <title>Counter Real Estate</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <script src="{% static 'js/darkmode.js' %}"></script>
+
 </head>
 <body>
   <div class="navbar">
@@ -20,18 +22,58 @@
     </div>
     <div class="linkRight">
       <div class="">
+        <button id="darkModeToggle" class="homebtn">🌙 Dark Mode</button>
+       </div>
+      <div class="">
          <a href="/aboutus"><button class="homebtn" >About Us</button></a>
       </div>
       <div class="">
-         <button class=""></button>
-       </div>
+        <a href="/login/"><button class="homebtn" >Log In</button></a>
+     </div>
+     <div class="">
+      <a href="/register/"><button class="homebtn" >Register</button></a>
+   </div>
+      
     </div>
   </div>
-  <div class="form_container">
-    <h4 class="form_heading">Search for properties all over Kenya</h4>
-    <a href="search"><button class="gotosearch">Go</button></a>
-
+  <div class="welcome_container">
+    <div class="welcome_message">
+        {% if user.is_authenticated %}
+        <h2>Welcome, {{ user.username }}! 👋</h2>
+        {% else %}
+        <h2>Welcome to Counter 2.1</h2>
+        {% endif %}
+    </div>
+    <div>
+        {% if user.is_authenticated %}
+        <p>Glad to have you back!</p>
+        {% else %}
+        <p></p>
+        {% endif %}
+    </div>
+    <div>
+        {% if user.is_authenticated %}
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="increment">➕ Increment</button>
+                <button type="submit" name="decrement">➖ Decrement</button>
+                <button type="submit" name="reset">🔄 Reset</button>
+            </form>
+            <h3>Your Counter:</h3>
+            <p>Current count: <strong style="color: chartreuse;">{{ counter.value }}</strong></p>
+        {% else %}
+        {% endif %}
+    </div>
+    <div>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+        <p>Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">register</a> to continue.</p>
+        {% endif %}
+    </div>
   </div>
+
+
   <div class="services">
     <h1>Our Services</h1>
       <p>Counter Real Estate Provides investment-grade developments all over the City.

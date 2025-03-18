@@ -1,3 +1,19 @@
+:root {
+  --bg-color: white;
+  --text-color: black;
+}
+
+.dark-mode {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
 .logo{
     height: 60px;
   }
@@ -9,9 +25,12 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
-    background-color: #ffffff;
+    height: 70px;
     z-index: 100;
+  }
+  .index_heading{
+    color: #d70011;
+
   }
   .linkRight{
     display: flex;

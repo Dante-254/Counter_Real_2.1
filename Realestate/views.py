@@ -1,7 +1,12 @@
 from django import forms
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Listing
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
 from .forms import ListingSearchForm
+from django.contrib.auth.forms import UserCreationForm
+from .models import Counter
+
 
 class SearchForm(forms.Form):
     bedrooms = forms.ChoiceField(choices=[('', 'Any'), (1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')], required=False)
@@ -59,6 +64,30 @@ def index(request):
 def aboutus(request):
     return render(request, 'aboutus.html')
 
-# def as_view(request):
-#     return render(request, 'index.html')
+
+@login_required
+def counter_view(request):
+    counter, created = Counter.objects.get_or_create(user=request.user)
+    
+    if request.method == "POST":
+        if "increment" in request.POST:
+            counter.value += 1
+        elif "decrement" in request.POST:
+            counter.value -= 1
+        elif "reset" in request.POST:
+            counter.value = 0
+        counter.save()
+
+    return render(request, "index.html", {"counter": counter})
+
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("/")
+    else:
+        form = UserCreationForm()
+    return render(request, "register.html", {"form": form})
 

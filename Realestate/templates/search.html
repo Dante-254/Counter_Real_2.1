@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/search.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="{% static 'js/darkmode.js' %}"></script>
+
     <title>Dive Deep</title>
 
 </head>
@@ -21,15 +22,16 @@
            <h1 class="index_heading">COUNTER REAL ESTATE</h1>
         </div>
         <div class="linkRight">
+            <div class="">
+                <button id="darkModeToggle"class="homebtn">🌙 Dark Mode</button>
+               </div>
           <div class="">
              <a href="/"><button class="homebtn" >Home</button></a>
           </div>
-          <div class="">
-            <a href=""></a>
-           </div>
+          
         </div>
     </div>
-
+<div class="body-container">
     <div class="search_heading">
         Search All Over Kenya
     </div>
@@ -57,6 +59,9 @@
             <p>No results found.</p>
         {% endif %}
     </div>
+</div>
+    
+
 </body>
 </html>
 
