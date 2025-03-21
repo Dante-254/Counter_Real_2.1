@@ -29,6 +29,9 @@ a{
 .welcome_message h2{
   font-size: 50px;
 }
+.username{
+  text-transform: capitalize;
+}
 .services{
   display: flex;
   justify-content: center;

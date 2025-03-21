@@ -42,12 +42,12 @@
         </form>
     </div>
     <div class="list_container">
-        <!-- {% if listings %} -->
+        {% if listings %}
         
             {% for listing in listings %}
             <div class="list_item">
                 <img src="{% static 'img/aboutus/download(1).jpg' %}" alt="">
-                <h6>{{ listing.title }}</h6>
+                <h6>{{ listing.description|truncatechars:50 }}</h6>
                 <h3>${{ listing.price }}</h3>
                 <p> {{ listing.bedrooms }} bedrooms,</p>
                 <p>{{ listing.bathrooms }} bathrooms</p>
@@ -64,50 +64,3 @@
 
 </body>
 </html>
-
- <!--
-    <form method="get" action="">
-        <label for="bedrooms">Bedrooms:</label>
-        <select name="bedrooms" id="bedrooms">
-            <option value="">Any</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-
-            
-        </select>
-        
-        <label for="bathrooms">Bathrooms:</label>
-        <select name="bathrooms" id="bathrooms">
-            <option value="">Any</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <Add more options as needed>
-        </select>
-    
-        <label for="price_min">Price Min:</label>
-        <input type="number" name="price_min" id="price_min">
-    
-        <label for="price_max">Price Max:</label>
-        <input type="number" name="price_max" id="price_max">
-    
-        <label for="listing_type">Listing Type:</label>
-        <select name="listing_type" id="listing_type">
-            <option value="">Any</option>
-            <option value="buy">Buy</option>
-            <option value="rent">Rent</option>
-        </select>
-    
-        <button type="submit">Search</button>
-    </form>
-      -->
-
-        <!-- <ul>
-        {% for listing in listings %}
-            <li>{{ listing.bedrooms }} bed, {{ listing.bathrooms }} bath - ${{ listing.price }} ({{ listing.get_listing_type_display }})</li>
-        {% empty %}
-            <li>No results found</li>
-        {% endfor %}
-        </ul>
-     -->

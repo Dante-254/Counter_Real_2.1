@@ -15,7 +15,6 @@ iframe{
   font-family: calibri;
   font-weight: bolder;
   font-size: 2em;
-  color: #d70011;
   text-align: center;
   display: block;
 }
@@ -27,7 +26,6 @@ iframe{
 .proj1,.proj2,.proj3{
   margin: 5px;
   padding: 0px;
-  border: #d70011 solid 0px;
   border-radius: 30px;
   transition: 0.5s;
   z-index: 0;
