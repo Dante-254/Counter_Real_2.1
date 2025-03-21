@@ -15,7 +15,6 @@ A Django application that provides an intuitive search interface for finding pro
 
 - Django
 - PostgreSQL
-- Bootstrap (for frontend design)
 - HTML/CSS/JavaScript
 
 ## Installation
