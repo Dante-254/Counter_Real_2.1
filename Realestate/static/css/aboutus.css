@@ -1,53 +1,96 @@
-body{
-  margin: 0;
-  height: 101%;
-}
-.body-container{
-  margin-top: 70px;
-}
-.map{
-  width: 100%;
-}
-iframe{
-  width: 100%;
-}
-.heading{
-  font-family: calibri;
-  font-weight: bolder;
-  font-size: 2em;
-  text-align: center;
-  display: block;
-}
-.projects{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 100px 100px;
-}
-.proj1,.proj2,.proj3{
-  margin: 5px;
-  padding: 0px;
-  border-radius: 30px;
-  transition: 0.5s;
-  z-index: 0;
-}
-.proj1 img,.proj2 img,.proj3 img{
-  width: 100%;
-  height: 280px;
-  border-radius: 30px;
-  
+.body-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px 20px;
 }
 
-.proj1 p,.proj2 p,.proj3 p{
-  margin: 5px 5px 5px 10px;
-  text-align: left;
-  padding: 4px;
+.map-div {
+  margin-bottom: 60px;
 }
-.proj1 h3,.proj2 h3,.proj3 h3{
-  margin: 20px 0px 20px 20px;
-  padding-left: 9px;
+
+.heading {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 30px;
 }
-.proj1:hover,.proj2:hover,.proj3:hover{
-  transform: translate(2px, -2px);
-  z-index: 0;
-  transition: 1s;
+
+.map {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.map iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  display: block;
+}
+
+.newprojects-div {
+  margin-top: 60px;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.proj-card {
+  background-color: var(--secondary-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.proj-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.proj-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.proj-content {
+  padding: 25px;
+}
+
+.proj-content h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.proj-content p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 28px;
+  }
+  
+  .projects {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .body-container {
+    padding: 20px 15px;
+  }
 }

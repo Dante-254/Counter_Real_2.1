@@ -1,66 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/search.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <script src="{% static 'js/darkmode.js' %}"></script>
+{% extends 'base.html' %} {% load static %} {% block title %}Search Properties -
+Counter Real Estate{% endblock %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}" />
+{% endblock %} {% block content %}
+<div class="search-page-container">
+  <div class="search_heading">
+    <h1>Search Properties All Over Kenya</h1>
+    <p>Find your perfect property with our advanced search filters</p>
+  </div>
 
-    <title>Dive Deep</title>
+  <div class="search-layout">
+    <aside class="search-sidebar">
+      <h3>Filter Properties</h3>
+      <form method="get" action="{% url 'search' %}" class="search-form">
+        <div class="form-group">
+          <label for="{{ form.listing_type.id_for_label }}"
+            >{{ form.listing_type.label }}</label
+          >
+          {{ form.listing_type }}
+        </div>
 
-</head>
-<body>
-    <div class="navbar">
-        <div class="logoleft">
-          <div class="logodiv">
-              <a href="/"><img class="logo" src="{% static 'img/logo/logo.jpg' %}" alt=""></a>
+        <div class="form-group">
+          <label for="{{ form.bedrooms.id_for_label }}"
+            >{{ form.bedrooms.label }}</label
+          >
+          {{ form.bedrooms }}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.bathrooms.id_for_label }}"
+            >{{ form.bathrooms.label }}</label
+          >
+          {{ form.bathrooms }}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.price_min.id_for_label }}"
+            >{{ form.price_min.label }}</label
+          >
+          {{ form.price_min }}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.price_max.id_for_label }}"
+            >{{ form.price_max.label }}</label
+          >
+          {{ form.price_max }}
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="search-btn">Search</button>
+          <a href="{% url 'search' %}" class="clear-btn">Clear Filters</a>
+        </div>
+      </form>
+    </aside>
+
+    <main class="search-results">
+      {% if listings %}
+      <div class="results-header">
+        <h2>
+          Found {{ listings|length }} propert{{
+          listings|length|pluralize:"y,ies" }}
+        </h2>
+      </div>
+      <div class="list_container">
+        {% for listing in listings %}
+        <div class="list_item">
+          <div class="property-image">
+            <img
+              src="{% static 'img/aboutus/download(1).jpg' %}"
+              alt="Property image"
+            />
+            <span class="listing-badge {{ listing.listing_type|lower }}"
+              >{{ listing.get_listing_type_display }}</span
+            >
           </div>
-        </div>
-        <div>
-           <h1 class="index_heading">COUNTER REAL ESTATE</h1>
-        </div>
-        <div class="linkRight">
-            <div class="">
-                <button id="darkModeToggle"class="homebtn">🌙 Dark Mode</button>
-               </div>
-          <div class="">
-             <a href="/"><button class="homebtn" >Home</button></a>
-          </div>
-          
-        </div>
-    </div>
-<div class="body-container">
-    <div class="search_heading">
-        Search All Over Kenya
-    </div>
-    <div class="search_form_container">
-        <form method="get" action="{% url 'search' %}" class="form">
-            {{ form.as_p }}
-            <button type="submit">Search</button>
-        </form>
-    </div>
-    <div class="list_container">
-        {% if listings %}
-        
-            {% for listing in listings %}
-            <div class="list_item">
-                <img src="{% static 'img/aboutus/download(1).jpg' %}" alt="">
-                <h6>{{ listing.description|truncatechars:50 }}</h6>
-                <h3>${{ listing.price }}</h3>
-                <p> {{ listing.bedrooms }} bedrooms,</p>
-                <p>{{ listing.bathrooms }} bathrooms</p>
-                <h4>({{ listing.get_listing_type_display }})</h4>
+          <div class="property-info">
+            <h3 class="property-price">${{ listing.price|floatformat:0 }}</h3>
+            <div class="property-details">
+              <span class="detail-item"
+                >🛏️ {{ listing.bedrooms }} bed{{ listing.bedrooms|pluralize
+                }}</span
+              >
+              <span class="detail-item"
+                >🚿 {{ listing.bathrooms }} bath{{ listing.bathrooms|pluralize
+                }}</span
+              >
             </div>
-            {% endfor %}
-        
-        {% else %}
-            <p>No results found.</p>
-        {% endif %}
-    </div>
+            <p class="property-description">
+              {{ listing.description|truncatewords:20 }}
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="no-results">
+        <div class="no-results-icon">🏠</div>
+        <h2>No properties found</h2>
+        <p>Try adjusting your search filters to see more results.</p>
+        <a href="{% url 'search' %}" class="cta-button primary"
+          >Clear Filters</a
+        >
+      </div>
+      {% endif %}
+    </main>
+  </div>
 </div>
-    
-
-</body>
-</html>
+{% endblock %}

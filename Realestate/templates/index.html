@@ -1,165 +1,161 @@
- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  {% load static %}
-    <meta charset="UTF-8">
-    <title>Counter Real Estate</title>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <script src="{% static 'js/darkmode.js' %}"></script>
-
-</head>
-<body>
-  <div class="navbar">
-    <div class="logoleft">
-      <div class="logodiv">
-          <a href="/"><img class="logo" src="{% static 'img/logo/logo.jpg' %}" alt=""></a>
-      </div>
-    </div>
-    <div>
-       <h1 class="index_heading">COUNTER REAL ESTATE</h1>
-    </div>
-    <div class="linkRight">
-      <div class="">
-        <button id="darkModeToggle" class="homebtn">🌙 Dark Mode</button>
-       </div>
-      <div class="">
-         <a href="/aboutus"><button class="homebtn" >About Us</button></a>
-      </div>
-      {% if user.is_authenticated %}
-      <div class="">
-        <a href="{% url 'logout' %}"><button class="homebtn" >Log Out</button></a>
-     </div>
-      {% else %}
-      <div class="">
-        <a href="/login/"><button class="homebtn" >Log In</button></a>
-      </div>
-      <div class="">
-        <a href="/register/"><button class="homebtn" >Register</button></a>
-      </div>
-      {% endif %}
-    </div>
+{% extends 'base.html' %} {% load static %} {% block title %}Home - Counter Real
+Estate{% endblock %} {% block content %}
+<div class="welcome_container">
+  <div class="welcome_message">
+    {% if user.is_authenticated %}
+    <h2>Welcome back, <span class="username">{{ user.username }}</span>! 👋</h2>
+    <p>Ready to find your perfect property?</p>
+    {% else %}
+    <h2>Welcome to Counter Real Estate</h2>
+    <p>Your trusted partner in finding the perfect property</p>
+    {% endif %}
   </div>
-  <div class="welcome_container">
-    <div class="welcome_message">
-        {% if user.is_authenticated %}
-        <h2>Welcome, <span class="username">{{ user.username }}</span>! 👋</h2>
-        {% else %}
-        <h2>Welcome to Counter 2.1</h2>
-        {% endif %}
-    </div>
-    <div>
-        {% if user.is_authenticated %}
-        <p>Glad to have you back!</p>
-        {% else %}
-        <p></p>
-        {% endif %}
-    </div>
+  <div class="cta-buttons">
+    <a href="{% url 'search' %}" class="cta-button primary"
+      >Search Properties</a
+    >
+    <a href="{% url 'aboutus' %}" class="cta-button secondary">Learn More</a>
   </div>
-
-
-  <div class="services">
-    <h1>Our Services</h1>
-      <p>Counter Real Estate Provides investment-grade developments all over the City.
-        The developments we offer have been conceptualized by our development team to be high quality 
-        assets using a data-driven approach in planning and design, that gears property for high rental
-        returns and an escalated rate of capital growth.</p>
-  </div>
-  <div class="gallary">
-    <div class="gal_units" >
-      <div class="gal_img">
-        <img src="{% static 'img/index/images.jpg' %}" alt="L">
-        <h3>FOR SALE</h3>
-        <p>KAHAWA SUKARI</p>
-        <p>KSH,50M</p>
-      </div>
-      <div class="gal_img">
-        <img src="{% static 'img/index/images-1.jpg' %}" alt="L">
-        <h3>FOR SALE</h3>
-        <p>RUNDA</p>
-        <p>KSH,150M</p>
-      </div>
-      <div class="gal_img">
-        <img src="{% static 'img/index/images-2.jpg' %}" alt="L" >
-            <h3>FOR SALE</h3>
-            <p>Muthaiga</p>
-            <p>KSH 50M</p>
-      </div>
-      <div class="gal_img">
-        <img src="{% static 'img/index/images-3.jpg' %}" alt="L" >
-            <h3>FOR SALE</h3>
-            <p>KAHAWA WEST</p>
-            <p>KSH 20M</p>
-      </div>
-      <div class="gal_img">
-        <img src="{% static 'img/index/images-4.jpg' %}" alt="L" >
-            <h3>FOR RENT</h3>
-            <p> WESTLANDS</p>
-            <p>KSH 100K</p>
-
-      </div>
-      <div class="gal_img">
-        <img src="{% static 'img/index/images-5.jpg' %}" alt="L">
-            <h3>FOR RENT</h3>
-            <p>LAVINGTON</p>
-            <p>KSH 150K</p>
-        </div>
-      <div class="gal_img">
-        <img src="{% static 'img/index/images-6.jpg' %}" alt="L">
-            <h3>FOR SALE</h3>
-            <p>KAREN</p>
-            <p>40M</p>
-      </div>
-    </div>
-  </div>
-<div class="footer" >
-    <div class="footer_content">
-
-        <div class="footer_section about">
-            <h1 class="logo_text"><span> Counter Real Estate</span>Property</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <div class="contact">
-                <span><i class="fas fa-phone"></i> &nbsp;123-456-789 </span>
-                <span><i class="fas fa-envelope"></i> &nbsp;info@counter.com </span>
-            </div>
-            <br>
-            <div class="socials">
-                <i class="fab fa-twitter-square"></i>
-                <i class="fab fa-facebook"></i>
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-youtube"></i>
-            </div>
-        </div>
-        <div class="footer_section contact_form">
-            <h2>Contact  Us</h2>
-            <br>
-            <form action="index.html" method="post">
-                <input type="email" name="email" class="text-input contact-input"placeholder="Your email address...">
-                <textarea name="message" id="text-input contact-input" cols="30" rows="10" placeholder="Your message..."></textarea>
-                <button type="submit" class="btn btn_big">
-                    <i class="fas fa-envelope"></i>
-                    send
-                </button>
-            </form>
-
-        </div>
-    </div>
-    <div class="footer_bottom">
-        &copy;counterrealestate.com|designed by Cheruu
-    </div>
-    <br>
-    <div>
-        <h1 class="logo_text"><span>Counter Real Estate</span></h1>
-        <ul>
-            <li>Urefu Heights</li>
-            <li>Smart Building</li>
-            <li>Saita Village</li>
-        </ul>
-    </div>
-    <div>
-
-    </div>
 </div>
-</body>
-</html>
+
+<div class="services">
+  <h1>Our Services</h1>
+  <p>
+    Counter Real Estate provides investment-grade developments all over the
+    City. The developments we offer have been conceptualized by our development
+    team to be high quality assets using a data-driven approach in planning and
+    design, that gears property for high rental returns and an escalated rate of
+    capital growth.
+  </p>
+</div>
+
+<div class="gallery">
+  <h2 class="gallery-title">Featured Properties</h2>
+  <div class="gal_units">
+    <div class="gal_img">
+      <img
+        src="{% static 'img/index/images.jpg' %}"
+        alt="Property in Kahawa Sukari"
+      />
+      <div class="gal_info">
+        <h3>FOR SALE</h3>
+        <p class="location">Kahawa Sukari</p>
+        <p class="price">KSH 50M</p>
+      </div>
+    </div>
+    <div class="gal_img">
+      <img
+        src="{% static 'img/index/images-1.jpg' %}"
+        alt="Property in Runda"
+      />
+      <div class="gal_info">
+        <h3>FOR SALE</h3>
+        <p class="location">Runda</p>
+        <p class="price">KSH 150M</p>
+      </div>
+    </div>
+    <div class="gal_img">
+      <img
+        src="{% static 'img/index/images-2.jpg' %}"
+        alt="Property in Muthaiga"
+      />
+      <div class="gal_info">
+        <h3>FOR SALE</h3>
+        <p class="location">Muthaiga</p>
+        <p class="price">KSH 50M</p>
+      </div>
+    </div>
+    <div class="gal_img">
+      <img
+        src="{% static 'img/index/images-3.jpg' %}"
+        alt="Property in Kahawa West"
+      />
+      <div class="gal_info">
+        <h3>FOR SALE</h3>
+        <p class="location">Kahawa West</p>
+        <p class="price">KSH 20M</p>
+      </div>
+    </div>
+    <div class="gal_img">
+      <img
+        src="{% static 'img/index/images-4.jpg' %}"
+        alt="Property in Westlands"
+      />
+      <div class="gal_info">
+        <h3>FOR RENT</h3>
+        <p class="location">Westlands</p>
+        <p class="price">KSH 100K</p>
+      </div>
+    </div>
+    <div class="gal_img">
+      <img
+        src="{% static 'img/index/images-5.jpg' %}"
+        alt="Property in Lavington"
+      />
+      <div class="gal_info">
+        <h3>FOR RENT</h3>
+        <p class="location">Lavington</p>
+        <p class="price">KSH 150K</p>
+      </div>
+    </div>
+    <div class="gal_img">
+      <img
+        src="{% static 'img/index/images-6.jpg' %}"
+        alt="Property in Karen"
+      />
+      <div class="gal_info">
+        <h3>FOR SALE</h3>
+        <p class="location">Karen</p>
+        <p class="price">KSH 40M</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer_content">
+    <div class="footer_section about">
+      <h1 class="logo_text"><span>Counter Real Estate</span></h1>
+      <p>
+        Your trusted partner in finding the perfect property. We provide
+        investment-grade developments with a data-driven approach.
+      </p>
+      <div class="contact">
+        <span>📞 123-456-789</span>
+        <span>✉️ info@counter.com</span>
+      </div>
+      <div class="socials">
+        <a href="#" aria-label="Twitter">🐦</a>
+        <a href="#" aria-label="Facebook">📘</a>
+        <a href="#" aria-label="Instagram">📷</a>
+        <a href="#" aria-label="YouTube">📺</a>
+      </div>
+    </div>
+    <div class="footer_section contact_form">
+      <h2>Contact Us</h2>
+      <form action="#" method="post">
+        {% csrf_token %}
+        <input
+          type="email"
+          name="email"
+          class="text-input contact-input"
+          placeholder="Your email address..."
+          required
+        />
+        <textarea
+          name="message"
+          class="text-input contact-input"
+          cols="30"
+          rows="5"
+          placeholder="Your message..."
+          required
+        ></textarea>
+        <button type="submit" class="btn btn_big">Send Message</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer_bottom">
+    &copy; 2024 counterrealestate.com | Designed by Cheruu
+  </div>
+</div>
+{% endblock %}

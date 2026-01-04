@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Counter Real Estate - Your trusted partner in finding the perfect property in Kenya"
+    />
+    <title>{% block title %}Counter Real Estate{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    {% block extra_css %}{% endblock %}
+    <script src="{% static 'js/darkmode.js' %}" defer></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a href="{% url 'index' %}" class="logo-link">
+          <img
+            class="logo"
+            src="{% static 'img/logo/logo.jpg' %}"
+            alt="Counter Real Estate Logo"
+          />
+          <span class="brand-text">COUNTER REAL ESTATE</span>
+        </a>
+      </div>
+
+      <div class="navbar-menu">
+        <a href="{% url 'search' %}" class="nav-link">Search</a>
+        <a href="{% url 'aboutus' %}" class="nav-link">About Us</a>
+
+        {% if user.is_authenticated %}
+        <span class="nav-user">Welcome, {{ user.username }}</span>
+        <a href="{% url 'logout' %}" class="nav-link nav-link-btn">Log Out</a>
+        {% else %}
+        <a href="{% url 'login' %}" class="nav-link">Log In</a>
+        <a href="{% url 'register' %}" class="nav-link nav-link-primary"
+          >Register</a
+        >
+        {% endif %}
+
+        <button
+          id="darkModeToggle"
+          class="dark-mode-btn"
+          aria-label="Toggle dark mode"
+        >
+          <span class="dark-mode-icon">🌙</span>
+        </button>
+      </div>
+    </nav>
+
+    {% if messages %}
+    <div class="messages-container">
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <main class="main-content">{% block content %}{% endblock %}</main>
+
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

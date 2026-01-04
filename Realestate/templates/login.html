@@ -1,23 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOG IN</title>
-</head>
-<body>
+{% extends 'base.html' %} {% load static %} {% block title %}Login - Counter
+Real Estate{% endblock %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}" />
+{% endblock %} {% block content %}
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>Welcome Back</h2>
+    <p class="auth-subtitle">Sign in to your account to continue</p>
 
-    <h2>Login</h2>
-    <form method="post">
+    {% if form.errors %}
+    <div class="alert alert-error">
+      Your username and password didn't match. Please try again.
+    </div>
+    {% endif %}
+
+    <form method="post" class="auth-form">
       {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Login</button>
-    </form>
-    <p>
-      Don't have an account?
-      <a href="{% url 'register' %}">Register here</a>
-    </p>
+      <div class="form-group">
+        <label for="id_username">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="id_username"
+          class="form-control"
+          required
+          autofocus
+          placeholder="Enter your username"
+          autocomplete="username"
+        />
+      </div>
 
-    
-</body>
-</html>
+      <div class="form-group">
+        <label for="id_password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="id_password"
+          class="form-control"
+          required
+          placeholder="Enter your password"
+          autocomplete="current-password"
+        />
+      </div>
+
+      <input type="hidden" name="next" value="{{ next }}" />
+
+      <button type="submit" class="auth-button">Log In</button>
+    </form>
+
+    <div class="auth-footer">
+      <p>
+        Don't have an account?
+        <a href="{% url 'register' %}" class="auth-link">Register here</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

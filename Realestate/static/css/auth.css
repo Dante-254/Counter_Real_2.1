@@ -1,0 +1,204 @@
+.auth-container {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, rgba(215, 0, 17, 0.05) 0%, rgba(215, 0, 17, 0.02) 100%);
+}
+
+.auth-card {
+  background-color: var(--secondary-color);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-hover);
+  width: 100%;
+  max-width: 450px;
+  border: 1px solid var(--border-color);
+}
+
+.auth-card h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.form-control {
+  padding: 12px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 15px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(215, 0, 17, 0.1);
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group input[type="text"]:not(.form-control),
+.form-group input[type="password"]:not(.form-control),
+.form-group input[type="email"]:not(.form-control) {
+  padding: 12px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 15px;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-family: inherit;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="email"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(215, 0, 17, 0.1);
+}
+
+.field-errors {
+  color: #f44336;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.field-errors ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.help-text {
+  display: block;
+  font-size: 12px;
+  color: var(--text-color);
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+/* Style Django form fields */
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"] {
+  padding: 12px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 15px;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-family: inherit;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="email"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(215, 0, 17, 0.1);
+}
+
+.auth-button {
+  padding: 14px 30px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.auth-button:hover {
+  background-color: #b5000e;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.auth-button:active {
+  transform: translateY(0);
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid var(--border-color);
+}
+
+.auth-footer p {
+  color: var(--text-color);
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+.auth-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.auth-link:hover {
+  color: #b5000e;
+  text-decoration: underline;
+}
+
+.alert-error {
+  background-color: #f44336;
+  color: white;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .auth-card {
+    padding: 30px 20px;
+  }
+  
+  .auth-card h2 {
+    font-size: 28px;
+  }
+}

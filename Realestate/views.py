@@ -1,21 +1,13 @@
-from django import forms
 from django.shortcuts import render, redirect
 from .models import Listing
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from .forms import ListingSearchForm
 from django.contrib.auth.forms import UserCreationForm
-
-
-class SearchForm(forms.Form):
-    bedrooms = forms.ChoiceField(choices=[('', 'Any'), (1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')], required=False)
-    bathrooms = forms.ChoiceField(choices=[('', 'Any'), (1, '1'), (2, '2'), (3, '3')], required=False)
-    price_min = forms.IntegerField(required=False)
-    price_max = forms.IntegerField(required=False)
-    listing_type = forms.ChoiceField(choices=[('', 'Any'), ('B', 'Buy'), ('R', 'Rent')], required=False)
+from django.contrib import messages
 
 def search(request):
-    form = SearchForm(request.GET)
+    form = ListingSearchForm(request.GET)
     listings = Listing.objects.all()  # Start with all listings
 
     if form.is_valid():
@@ -25,11 +17,11 @@ def search(request):
         price_max = form.cleaned_data.get('price_max')
         listing_type = form.cleaned_data.get('listing_type')
 
-        # Apply filters and print the query at each step for debugging
+        # Apply filters
         if bedrooms:
-            listings = listings.filter(bedrooms=bedrooms)
+            listings = listings.filter(bedrooms=int(bedrooms))
         if bathrooms:
-            listings = listings.filter(bathrooms=bathrooms)
+            listings = listings.filter(bathrooms=int(bathrooms))
         if price_min is not None:
             listings = listings.filter(price__gte=price_min)
         if price_max is not None:
@@ -58,7 +50,10 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            messages.success(request, f'Welcome, {user.username}! Your account has been created successfully.')
             return redirect("/")
+        else:
+            messages.error(request, 'Please correct the errors below.')
     else:
         form = UserCreationForm()
     return render(request, "register.html", {"form": form})

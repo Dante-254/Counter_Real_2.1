@@ -1,19 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REGISTER</title>
-</head>
-<body>
-    
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign Up</button>
-    </form>
-    <a href="{% url 'login' %}">Already have an account? Log in</a>
-    
+{% extends 'base.html' %} {% load static %} {% block title %}Register - Counter
+Real Estate{% endblock %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}" />
+{% endblock %} {% block content %}
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>Create Account</h2>
+    <p class="auth-subtitle">Join Counter Real Estate today</p>
 
-</body>
-</html>
+    <form method="post" class="auth-form">
+      {% csrf_token %} {% if form.errors %}
+      <div class="alert alert-error">Please correct the errors below.</div>
+      {% endif %}
+
+      <div class="form-group">
+        <label for="{{ form.username.id_for_label }}">Username</label>
+        {{ form.username }} {% if form.username.errors %}
+        <div class="field-errors">{{ form.username.errors }}</div>
+        {% endif %} {% if form.username.help_text %}
+        <small class="help-text">{{ form.username.help_text }}</small>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.password1.id_for_label }}">Password</label>
+        {{ form.password1 }} {% if form.password1.errors %}
+        <div class="field-errors">{{ form.password1.errors }}</div>
+        {% endif %} {% if form.password1.help_text %}
+        <small class="help-text">{{ form.password1.help_text }}</small>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+        {{ form.password2 }} {% if form.password2.errors %}
+        <div class="field-errors">{{ form.password2.errors }}</div>
+        {% endif %} {% if form.password2.help_text %}
+        <small class="help-text">{{ form.password2.help_text }}</small>
+        {% endif %}
+      </div>
+
+      <button type="submit" class="auth-button">Sign Up</button>
+    </form>
+
+    <div class="auth-footer">
+      <p>
+        Already have an account?
+        <a href="{% url 'login' %}" class="auth-link">Log in here</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
